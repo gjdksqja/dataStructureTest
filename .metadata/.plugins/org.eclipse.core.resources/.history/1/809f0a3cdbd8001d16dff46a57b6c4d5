@@ -1,0 +1,36 @@
+package dataStructure;
+
+public class QueueList {
+	private Node rear; // add 위치
+    private Node front; // pull 위치
+    
+    
+    public QueueList() {
+    	Node n = new Node();
+    	front = n;
+    	rear = n;
+
+    }
+      public void add(Object o) {
+    	  Node n = new Node();
+    	  n.data = o;
+    	  
+    	  //현재의 다음에 새로 만든 주소를 넣고
+    	  rear.next = n;
+    	  
+    	  //현재를 새로 만든 Object로 변경
+    	  rear = n;
+      }
+      
+      public Object pull() {
+    	  if(front.data == null) {
+    		  throw new RuntimeException();
+    	  }
+    	  Object out = front.data;
+    	  if(front.next == null) {    		  
+    		  front = front.next;
+    	  }
+    	  
+    	  return out;
+      }
+}

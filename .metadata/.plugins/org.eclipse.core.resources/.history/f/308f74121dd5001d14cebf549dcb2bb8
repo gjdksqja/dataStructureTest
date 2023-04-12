@@ -1,0 +1,13 @@
+package dataStructure;
+
+public class CircleQueue {
+
+	    private final Object[] queue;
+
+	    private int front = 0;
+	    private int rear = 0;
+
+	    public CircleQueue(int size) {
+	        this.queue = new Object[size];
+	    }
+}

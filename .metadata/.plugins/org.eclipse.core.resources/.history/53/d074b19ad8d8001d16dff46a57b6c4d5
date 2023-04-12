@@ -1,0 +1,24 @@
+package dataStructure;
+
+public class QueueList {
+    private Node front; // pull 위치
+    private Node rear; // add 위치
+    
+    
+    public QueueList(int size) {
+    	Node n = new Node();
+    	front = n;
+    	rear = n;
+    
+    }
+      public void add(Object o) {
+    	  Node n = new Node();
+    	  n.data = o;
+      }
+      
+      public Object pull() {
+    	  Object o = new Object();
+    	  
+    	  return o;
+      }
+}

@@ -1,0 +1,35 @@
+package dataStructure;
+
+public class CircleQueue {
+
+	    private final Object[] queue;
+
+	    private int front = 0; // 현재 pull 위치
+	    private int rear = 0; // 현재 add 위치 
+
+	    public CircleQueue(int size) {
+	        this.queue = new Object[size];
+	    }
+	    
+	    public void add(Object o) {
+	    	if(rear != this.queue.length) {	    		
+	    		this.queue[this.rear] = o;
+		    	++this.rear;
+	    	}else {
+	    		this.rear = 0;
+	    		this.queue[this.rear] = o;		    		    		
+	    	}
+	    }
+	    
+	    public Object pull() {
+	    	Object a = new Object();
+	    	a = this.queue[this.front];
+	    	this.queue[this.front] = null;
+	    	if(rear != this.queue.length) {		    		
+	    		this.front++;
+	    	}else {
+	    		this.front = 0;
+	    	}
+	    	return a;
+	    }
+}

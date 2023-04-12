@@ -1,0 +1,46 @@
+package dataStructure;
+
+public class QueueList {
+		
+	private Node rear; // add 위치
+	private Node front; // pull 위치
+				
+	public QueueList() {
+		Node n = new Node();
+		front = n;
+		rear = n;
+
+	}
+    
+	public boolean isEmpty() {
+	    return null == front;
+	}
+	
+	public void add(Object o) {
+		  if (isEmpty()) {
+			  
+		  }
+		  Node n = new Node();
+		  n.data = o;
+		  
+		  //현재의 다음에 새로 만든 주소를 넣고
+		  rear.next = n;
+		  
+		  //현재를 새로 만든 Object로 변경
+		  rear = n;
+	}
+  
+	public Object pull() {
+		if(front.data == null) { // 현재 노드에 data가 없음
+			throw new RuntimeException("data가 없음");
+		}	
+		Object out = front.data;
+		if(front.next == null) { // 다음이 없음 ==> front가 일어나야만 함
+			throw new RuntimeException("더 이상의 노드가 없음");
+		} else {
+			front = front.next;
+		}
+		  
+		return out;
+	 }
+}

@@ -1,0 +1,31 @@
+package dataStructure;
+
+public class CircleQueue {
+
+	    private final Object[] queue;
+
+	    private int front = 0; // 현재 pop 위치
+	    private int rear = 0; // 현재 push 위치 
+
+	    public CircleQueue(int size) {
+	        this.queue = new Object[size];
+	    }
+	    
+	    public void push(Object o) {
+	    	if(rear != this.queue.length) {	    		
+	    		this.queue[this.rear] = o;
+		    	++this.rear;
+	    	}else {
+	    		this.rear = 0;
+	    		this.queue[this.rear] = o;		    		    		
+	    	}
+	    }
+	    
+	    public Object pop() {
+	    	Object a = this.queue[this.front];
+	    	if(rear != this.queue.length) {		    		
+	    		this.front++;
+	    	}
+	    	return a;
+	    }
+}

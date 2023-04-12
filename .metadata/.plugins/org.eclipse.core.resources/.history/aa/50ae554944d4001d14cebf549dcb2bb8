@@ -1,0 +1,10 @@
+package dataStructure;
+
+public class DoublyLinkedList<T> {
+	DoublyLinkedNode<T> head; // 첫번째 노드
+	DoublyLinkedNode<T> last; // 마지막 노드
+	int size = 0; // 크기
+	
+	
+}
+  

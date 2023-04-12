@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;dataStructure.circleQueue.java&apos; to &apos;CircleQueue.java&apos;&#x0D;&#x0A;- Original project: &apos;dataStructure&apos;&#x0D;&#x0A;- Original element: &apos;dataStructure.circleQueue.java&apos;&#x0D;&#x0A;- Renamed element: &apos;dataStructure.CircleQueue.java&apos;" description="Rename compilation unit &apos;circleQueue.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src&lt;dataStructure{circleQueue.java" name="CircleQueue.java" references="false" stamp="1680855635885" version="1.0"/>
+</session>
