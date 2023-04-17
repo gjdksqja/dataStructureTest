@@ -1,7 +1,0 @@
-package dataStructure;
-
-public class DoublyLinkedNode {
-	DoublyLinkedNode pre;
-	DoublyLinkedNode next;
-	Object data;
-}

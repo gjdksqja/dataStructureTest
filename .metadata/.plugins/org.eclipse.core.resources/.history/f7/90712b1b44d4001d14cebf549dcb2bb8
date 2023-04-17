@@ -1,7 +1,0 @@
-package dataStructure;
-
-public class DoublyLinkedList {
-	DoublyLinkedNode<T> head; // 첫번째 노드
-	int size = 0; // 크기
-}
-  

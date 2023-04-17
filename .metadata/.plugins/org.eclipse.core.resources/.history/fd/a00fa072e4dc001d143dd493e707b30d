@@ -1,0 +1,11 @@
+package dataStructure;
+
+import dataStructure.recursion.SplitRecursion;
+
+public class Main {
+
+	public static void main(String[] args) {	
+		// TODO Auto-generated method stub
+		SplitRecursion splitRecursion = new SplitRecursion();
+	}
+}

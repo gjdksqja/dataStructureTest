@@ -1,0 +1,11 @@
+package dataStructure.recursion;
+
+public class SplitRecursion {
+	int[] sumArr = {5,6,7,8,4,3,2,9}; // length = 8 일때
+	
+	
+	// 반으로 쪼개서 하나씩 더하기
+	public int sum() {
+		
+	}
+}
