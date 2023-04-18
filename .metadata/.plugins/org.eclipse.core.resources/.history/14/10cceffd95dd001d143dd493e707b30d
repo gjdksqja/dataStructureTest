@@ -1,0 +1,15 @@
+package dataStructure.tree;
+
+public class NormalTree {
+    Node root;
+
+    public void addData(int key) {
+        Node newNode = new Node();
+        newNode.key = key;
+        if (null == root) {
+            root = newNode;
+        } else {
+        	
+        }
+    }
+}
