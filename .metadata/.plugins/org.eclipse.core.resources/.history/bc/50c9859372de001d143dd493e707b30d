@@ -1,0 +1,62 @@
+package dataStructure.tree;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class SideNomalTree {
+    Node root;
+
+    public void add(int key) {
+        Queue<Node> queue = new LinkedList<>();
+        Node newNode = new Node();
+        newNode.key = key;
+        if (null == root) {
+            root = newNode;
+        } else {
+            queue.offer(root);
+            while (!queue.isEmpty()) {
+                Node parentNode = queue.poll();
+                if (null != parentNode.left) {
+                    queue.offer(parentNode.left);
+                } else {
+                    parentNode.left = newNode;
+                    break;
+                }
+                if (null != parentNode.right) {
+                    queue.offer(parentNode.right);
+                } else {
+                    parentNode.right = newNode;
+                    break;
+                }
+            }
+        }
+    }
+    
+    private void visit(Node node) {
+        System.out.println("방문 : " + node.key);
+    }
+    
+    // 탐색 방법 ::  너비 우선 탐색
+    
+    public void levelTraversal() {
+    	System.out.println("너비 우선 탐색 시작");
+    	Queue<Node> queue = new LinkedList<>();
+    	queue.offer(root);
+    	levelOrder(queue);    	
+    }
+    
+    public void levelOrder(Queue<Node> queue) {
+    	 if (!queue.isEmpty()) {
+    		 Node parentNode = queue.poll(); 
+             if (null != parentNode.left) {
+                 queue.offer(parentNode.left);
+                 visit(parentNode.left);
+             }
+             if (null != parentNode.right) {
+                 queue.offer(parentNode.right);
+                 visit(parentNode.right);
+             }   		 
+    	 }    	
+    }
+    
+}

@@ -1,7 +1,7 @@
 package dataStructure;
 
-public class testBasic {
-	public testBasic() {
+public class TestBasic {
+	public TestBasic() {
 		getListQueue();
 		getDoublyLinkedList();
 		genericTest();

@@ -2,9 +2,9 @@ package dataStructure;
 
 import dataStructure.recursion.Sigma;
 
-public class testRecursion {
+public class TestRecursion {
 	
-	public testRecursion() {		
+	public TestRecursion() {		
 		Sigma sigma = new Sigma();
 	}
 }

@@ -1,0 +1,29 @@
+package dataStructure.tree;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+// 이진 탐색 트리
+public class BinarySearchTree {
+	Node root;
+	
+	public void add(int key) {
+		Node newNode = new Node();
+		newNode.key = key;
+		if(root == null) {
+			root = newNode;
+		} else {
+			insertNode(newNode);
+		}
+	}
+	
+	private void insertNode(Node node) {
+		Queue queue = new LinkedList<>();
+		queue.offer(root);
+		
+		while(!queue.isEmpty()) {
+			
+		}
+		
+	}
+}
