@@ -22,6 +22,11 @@ public class TestTree {
 		binarySearchTree.add(8);
 		binarySearchTree.add(1);
 		binarySearchTree.add(6);
+		binarySearchTree.search(0);
+		binarySearchTree.search(8);
+		binarySearchTree.search(11);
+		binarySearchTree.search(1);
+		binarySearchTree.removeNode(5);
 //		binarySearchTree.printTree();
 //		System.out.println("traversal");
 //		binarySearchTree.traversal();

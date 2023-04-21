@@ -1,7 +1,0 @@
-package dataStructure.tree;
-
-
-// 이진 탐색 트리
-public class BinarySearchTree {
-
-}

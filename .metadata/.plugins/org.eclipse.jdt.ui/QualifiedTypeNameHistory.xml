@@ -1,2 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="dataStructure.recursion.Sigma"/>
+    <fullyQualifiedTypeName name="dataStructure.testRecursion"/>
+    <fullyQualifiedTypeName name="java.util.Arrays"/>
+    <fullyQualifiedTypeName name="dataStructure.recursion.SplitRecursion"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="dataStructure.recursion.MazeProblem"/>
+    <fullyQualifiedTypeName name="dataStructure.tree.NormalTree"/>
+    <fullyQualifiedTypeName name="dataStructure.tree.SideNomalTree"/>
+    <fullyQualifiedTypeName name="java.util.LinkedList"/>
+    <fullyQualifiedTypeName name="java.util.Queue"/>
+    <fullyQualifiedTypeName name="dataStructure.tree.BinarySearchTree"/>
+</qualifiedTypeNameHistroy>

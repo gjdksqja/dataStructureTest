@@ -57,4 +57,81 @@ public class BinarySearchTree {
 		}
 		
 	}
+	/*
+	 * 시간 복잡도
+	 * 이진 탐색 트리(Binary Search Tree, BST)의 시간 복잡도가 logN인 이유는 트리의 구조 때문입니다. 
+	 * 각 노드는 최대 두 개의 자식 노드를 가질 수 있고, 왼쪽 자식 노드는 부모 노드보다 작은 값을 가지며, 오른쪽 자식 노드는 부모 노드보다 큰 값을 가집니다.
+	 * 이진 탐색 트리에서 값을 찾거나 추가하거나 삭제할 때, 트리의 높이에 따라 시간이 걸립니다. 
+	 * 트리가 균형 잡혀 있을 때, 트리의 높이는 log₂(N)이며, 여기서 N은 트리에 있는 노드의 개수입니다. 이 때, 시간 복잡도는 O(logN)이 됩니다.
+	 * 예를 들어, 이진 탐색 트리에서 값을 찾는 과정에서, 매번 탐색 범위가 절반으로 줄어들기 때문에 빠르게 원하는 값을 찾을 수 있습니다.
+	 * 
+	 * => 결국 탐색은 log₂(N)에 수렴함
+	 */
+	
+    public Node search(int key) {
+        Node searchNode = getData(root, key);
+        
+        if(searchNode == null) {
+        	System.out.println("notFound");
+        }else {        	
+        	System.out.println("Find : " +  searchNode.key);
+        }
+        return searchNode;
+        
+    }
+	
+	// 탐색
+	private Node getData(Node node, int key) { // 검색 key 값
+		
+		Node searchNode = null;
+		if(node == null ) {
+			return searchNode;
+		}
+		
+		if(node.key == key) {			
+			return searchNode = node;
+		}
+		if(node.key > key ) {
+			searchNode = getData(node.left , key);
+		} else if (node.key < key) {
+			searchNode = getData(node.right , key);
+		}
+		return searchNode;
+	}
+	
+	// 삭제) 왼쪽 노드중 가장 큰 키와 오른쪽으로 가장 큰 키 값을 구한다. 
+	// => 이른 해당 위치의 노드와 변경한다. 이번에는 key를 찾아낸 노드것으로 바꾸고 찾아낸 node는 삭제 시키자.
+	public void removeNode(int key) {
+		Node updateNode =  search(key);
+		
+		if(updateNode == null) {
+			System.out.println("삭제하려는 노드가 없습니다.");
+			return;
+		}
+		
+		// 왼쪽 -- 가장 큰
+		
+		
+		// 오른쪽 -- 가장 작은
+		
+	}
+	
+	/*
+	 * searchKey : 찾을 키,
+	 * maxKey : 현재 가장 큰 키,
+	 * node : 탐색 노드
+	 */
+	private Node getLargestKey(int maxKey, Node node) { 
+		
+		// 첫시작은 deleteNode의 왼쪽임 -> 이 후 오른쪽으로 계속 이동 하면서 결과를 찾다가, 없으면 해당 노드가 제일 큼		
+		if(node.right == null) {
+			return node;
+		}
+		
+		if(node.key > maxKey) {
+			maxKey = node.key;
+			node = getLargestKey(maxKey, node.right);
+		}		
+		return node; 
+	}
 }
