@@ -8,7 +8,7 @@ public class TestTree {
 	
 	TestTree() {
 		//getSideNomalTree();
-		getBinarySearchTree();
+		//getBinarySearchTree();
 	}
 	
 	public void getBinarySearchTree() {

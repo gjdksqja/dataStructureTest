@@ -7,6 +7,10 @@ import java.util.Queue;
 public class BinarySearchTree {
 	Node root;
 	
+	public void printNode(Node node) {
+		System.out.print(node);
+	}
+	
 	public void add(int key) {
 		Node newNode = new Node();
 		newNode.key = key;
@@ -98,40 +102,75 @@ public class BinarySearchTree {
 		}
 		return searchNode;
 	}
-	
+		
 	// 삭제) 왼쪽 노드중 가장 큰 키와 오른쪽으로 가장 큰 키 값을 구한다. 
 	// => 이른 해당 위치의 노드와 변경한다. 이번에는 key를 찾아낸 노드것으로 바꾸고 찾아낸 node는 삭제 시키자.
 	public void removeNode(int key) {
 		Node updateNode =  search(key);
+		
+		//printNode(updateNode);
 		
 		if(updateNode == null) {
 			System.out.println("삭제하려는 노드가 없습니다.");
 			return;
 		}
 		
-		// 왼쪽 -- 가장 큰
+		// 왼쪽 --      가장 큰
+		// 1.if getLagestNode, 
+		// 2.change updateNode and, 
+		// 3.you play to go LagestNode's Parent and change that's right Node Null
+		//   3-1. if largestNode.left is not null , largestNode.left adjust parent Node
+		if(updateNode.left != null ) {			
+			updateNode.key = getLargestNode(updateNode.left).key;
+			Node adjustNode = getData(updateNode.left, updateNode.key);
+			if(adjustNode.left != null) {
+				int adjustNodeleftKey = adjustNode.left.key;
+				adjustNode.key = adjustNodeleftKey;
+				adjustNode.left = null;
+				
+			} else {
+				adjustNode = null;
+			}
+		}else {
+			updateNode = null;
+		}
 		
+		System.out.println("삭제 완료");
 		
-		// 오른쪽 -- 가장 작은
+		// 오른쪽 -- 가장 작은 --> 어차피 둘 중에 하나 아무거나 써도 됨으로 하나만 살린다
+//        if (updateNode.right != null) {
+//            updateNode.key = getSmallestNode(updateNode.right).key;
+//            Node adjustNode = getData(updateNode.right, updateNode.key);
+//            if (adjustNode.right != null) {
+//                int adjustNoderightKey = adjustNode.right.key;
+//                adjustNode.key = adjustNoderightKey;
+//                adjustNode.right = null;
+//            } else {
+//                adjustNode = null;
+//            }
+//        } else {
+//            updateNode = null;
+//        }		
 		
 	}
 	
 	/*
-	 * searchKey : 찾을 키,
-	 * maxKey : 현재 가장 큰 키,
 	 * node : 탐색 노드
 	 */
-	private Node getLargestKey(int maxKey, Node node) { 
+	private Node getLargestNode(Node node) { 
 		
 		// 첫시작은 deleteNode의 왼쪽임 -> 이 후 오른쪽으로 계속 이동 하면서 결과를 찾다가, 없으면 해당 노드가 제일 큼		
 		if(node.right == null) {
 			return node;
 		}
 		
-		if(node.key > maxKey) {
-			maxKey = node.key;
-			node = getLargestKey(maxKey, node.right);
-		}		
-		return node; 
+		return getLargestNode(node.right); 
+	}
+	
+	private Node getSmallestNode(Node node) { 
+	    if(node.left == null) {
+	        return node;
+	    }
+	    return getSmallestNode(node.left); 
 	}
 }
