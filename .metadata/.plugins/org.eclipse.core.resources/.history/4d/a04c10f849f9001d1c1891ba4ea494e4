@@ -1,0 +1,25 @@
+package dataStructure.tree;
+
+public class AVLNodeTree {
+    private AVLNode root;
+    
+    // 깊이 찾기 (+업데이트?)
+    private int getHeight(AVLNode x) {   	
+        int leftChildHeight = (null != x.left) ? x.left.height : -1;
+        int rightChildHeight = (null != x.right) ? x.right.height : -1;
+        return Math.max(leftChildHeight, rightChildHeight) + 1;
+    }
+    
+    
+    // 균형도 계산
+    private int getBalance(AVLNode x) {
+    	
+    }
+    
+    
+    // add
+    
+    // remove
+    
+    // 균형도 회전
+}

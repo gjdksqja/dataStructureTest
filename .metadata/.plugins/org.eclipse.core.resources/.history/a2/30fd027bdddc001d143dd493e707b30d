@@ -1,5 +1,0 @@
-package dataStructure.recursion;
-
-public class SplitSum {
-	int[] sumArr = {1,2,3,4,5,6,7};
-}

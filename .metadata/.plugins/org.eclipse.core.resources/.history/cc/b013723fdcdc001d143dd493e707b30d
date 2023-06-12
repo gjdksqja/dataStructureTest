@@ -1,7 +1,0 @@
-package dataStructure;
-
-import dataStructure.recursion.Sigma;
-
-public class testRecursion {
-	Sigma sigma = new Sigma();
-}
