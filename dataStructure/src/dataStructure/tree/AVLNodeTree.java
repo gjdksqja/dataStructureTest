@@ -1,5 +1,8 @@
 package dataStructure.tree;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class AVLNodeTree {
     private AVLNode root;
     
@@ -120,4 +123,55 @@ public class AVLNodeTree {
         return R;
     }    
     
+    //재귀 함수여야 한다
+    public AVLNode addData(AVLNode node, int key) {        
+        // 등록 하면서 바로 Rotate가 필요함  => 리턴되면서 모든 로드가 rotate3 대상이 됨
+ 
+        // 넣으면서 height는 같이 넣어줘야 한다.
+        if (null == root) {
+        	node.height = 1;
+            root = node;
+        } else {
+        	// Rotate => 일단 넣고 rotate를 돌리는게 맞는듯 
+            // Rotate 대상? 그리고 언제까지? 균형도가 맞을때까지 
+            // 이때 부모 상태에선 맞는데 아래 자식 상태에선 안 맞을 경우가 있을까?
+        	
+        	/**
+             * 여기선 기존의 queue 방식이 아닌 그냥 기본적인 node 좌우 검색을 쓰자.
+             * 그렇게 해야 넣고 바로 height 관리와 균형도 검사가 쉬움
+             */
+        	
+        	// 이진트리 검색부 
+            if (key < node.key) {
+            	if(node.left == null) {            		
+            		AVLNode newNode = new AVLNode();
+            		newNode.key = key;
+            		newNode.height = 0;
+            		node.left = newNode;
+            		
+            		changeHeight(node);
+            		
+            	} else {
+            	   node.left = addData(node.left,key);
+            	}
+            } else if (key > node.key) {    
+            	if(node.right == null) {            		
+            		AVLNode newNode = new AVLNode();
+            		newNode.key = key;
+            		newNode.height = 0;
+            		node.right = newNode;
+            		changeHeight(node);
+            		
+            	} else {
+            		node.right = addData(node.right,key);
+            	}
+            } else {
+            	// 중복된 키는 트리에 추가하지 않습니다
+            	return node;
+            }	
+        }
+        // 항상 rotate로 마무리하며 되돌아가기 전에 계속 확인
+        // :: 더할때나 더한 이후 돌아올때나 한결같이 해줘서 향상성 유지
+        return rotate(node);
+    }
 }

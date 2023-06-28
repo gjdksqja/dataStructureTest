@@ -1,0 +1,10 @@
+### Eclipse ###
+.metadata
+/bin
+*.tmp
+*.bak
+*.swp
+*~.nib
+.settings/
+.loadpath
+.recommenders
