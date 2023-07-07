@@ -8,7 +8,7 @@ public class AVLNodeTree {
     
     // 깊이 찾기 (+업데이트?)
     private int getHeight(AVLNode x) {   	
-        int leftChildHeight = (null != x.left) ? x.left.height : -1;
+        int leftChildHeight = (null != x.left) ?      x.left.height : -1;
         int rightChildHeight = (null != x.right) ? x.right.height : -1;
         return Math.max(leftChildHeight, rightChildHeight) + 1;
     }
@@ -131,6 +131,7 @@ public class AVLNodeTree {
         if (null == root) {
         	node.height = 1;
             root = node;
+            return root;
         } else {
         	// Rotate => 일단 넣고 rotate를 돌리는게 맞는듯 
             // Rotate 대상? 그리고 언제까지? 균형도가 맞을때까지 
@@ -174,4 +175,95 @@ public class AVLNodeTree {
         // :: 더할때나 더한 이후 돌아올때나 한결같이 해줘서 향상성 유지
         return rotate(node);
     }
+    
+    // 삭제 시 오른쪽에서 제일 작은 놈을 찾음.
+    private AVLNode findMin(AVLNode node) {
+        while (node.left != null)
+            node = node.left;
+        return node;
+    }
+    
+    // 제거시마다 rotate 시켜줘야 함 이것도 -- 재귀
+    public AVLNode removeNode(AVLNode node, int key ) {
+        if (null == root) {
+        	// 없음.
+            return null;
+        } else if(node.key == key ) {
+            // node.key = key, 같음 = 삭제 대상
+            /*
+             * 1. leaf, height가 0 인경우는 지워버림
+             * 2. 자식이 있으면 대체를 시켜야함.
+             *  2-1. 하나의 자식이면 그 자식 사용
+             *  2-2. 두개 다 있으면 왼쪽에서 젤 큰놈이나 오른쪽에서 젤 작은놈과 바꿔야 함.
+             */
+
+            // 1. No child case
+            if(node.left == null && node.right == null) {
+                node = null;
+            } 
+            // 2. One child case
+            else if(node.right == null) {
+                node = node.left;
+            } else if(node.left == null) {
+                node = node.right;
+            } 
+            // 3. Two children case
+            else {
+                // Find the minimum value node from the right subtree
+                AVLNode temp = findMin(node.right);
+                // Replace the value of the node to be deleted with the found minimum value
+                node.key = temp.key;
+                // Delete the minimum value node from the right subtree
+                node.right = removeNode(node.right, temp.key);
+            }
+        } else {
+            if (key < node.key) {
+            	if(node.left != null) {
+            		node.left = removeNode(node.left,key);
+            	}
+            }else if(key > node.key) {
+            	if(node.right != null) {
+            		node.right = removeNode(node.right,key);
+            	}            	
+            }
+        }
+        
+    	return rotate(node);
+    }
+    
+    private void printHelper(AVLNode x, String indent, boolean last) {
+        if (x != null) {
+            System.out.print(indent);
+            if (last) {
+                System.out.print("R----");
+                indent += "   ";
+            } else {
+                System.out.print("L----");
+                indent += "|  ";
+            }
+
+            System.out.println(x.key + "(h:" + x.height + ")");
+            printHelper(x.left, indent, false);
+            printHelper(x.right, indent, true);
+        }
+    }    
+
+    public void printTree() {
+        printHelper(this.root, "", true);
+    }
+
+    public void traversal() {
+        inorderTraversal(root);
+        System.out.println("");
+    }
+
+    private void inorderTraversal(AVLNode node) {
+        // TODO : 중위 순회
+        if (null == node) {
+            return;
+        }
+        inorderTraversal(node.left);
+        System.out.printf("%d ", node.key);
+        inorderTraversal(node.right);
+    }   
 }
